@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class LandingActivity extends AppCompatActivity {
+    public int testInt = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
