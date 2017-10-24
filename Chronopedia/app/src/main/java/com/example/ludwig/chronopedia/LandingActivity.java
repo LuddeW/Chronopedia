@@ -6,6 +6,7 @@ import android.os.Bundle;
 public class LandingActivity extends AppCompatActivity {
 
 public int testInt = 1;
+    private String test = "Freddie ftw";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
