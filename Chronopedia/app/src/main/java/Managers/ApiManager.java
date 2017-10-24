@@ -5,5 +5,5 @@ package Managers;
  */
 
 public class ApiManager {
-    
+    // hämtar apier från Wiki och Darksky
 }
