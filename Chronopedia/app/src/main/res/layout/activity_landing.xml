@@ -7,6 +7,7 @@
     tools:context="com.example.ludwig.chronopedia.LandingActivity">
 
     <TextView
+        android:id="@+id/landingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
