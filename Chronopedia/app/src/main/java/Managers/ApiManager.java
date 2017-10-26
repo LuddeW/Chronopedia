@@ -10,13 +10,15 @@ import com.example.ludwig.chronopedia.R;
 
 public class ApiManager {
     // hämtar apier från Wiki och Darksky
-
+    String returnWeatherString = "Sun";
+    String returnWikiString = "2003 – Concorde makes its last commercial flight." ;
     public String returnWeather(){
-        return("Sun");
+
+        return(returnWeatherString);
     }
 
     public String returnWikiQuote(){
-        return ("2003 – Concorde makes its last commercial flight.");
+        return (returnWikiString);
     }
 
 }
