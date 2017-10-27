@@ -19,8 +19,14 @@ public class ApiManager {
     // hämtar apier från Wiki och Darksky
     String returnWeatherString = "Sun";
     String returnWikiString = "2003 – Concorde makes its last commercial flight." ;
-    //RequestQueue queue = Volley.newRequestQueue(//Some kind of context here);
+    //RequestQueue queue;
     String url ="http://www.google.com";
+    Context context;
+
+    public  ApiManager(Context context){
+        this.context = context;
+        //queue = Volley.newRequestQueue(context);
+    }
 
     public String returnWeather(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -28,7 +34,7 @@ public class ApiManager {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        returnWeatherString = "Response is: "+ response.substring(0,500);
+                        returnWeatherString = "Response is: "+ response.substring(0,5);
                     }
                 }, new Response.ErrorListener() {
             @Override

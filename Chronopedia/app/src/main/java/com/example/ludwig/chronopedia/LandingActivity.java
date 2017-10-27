@@ -18,8 +18,7 @@ public class LandingActivity extends AppCompatActivity {
 
     private void initComponents(){
         landingTextView = (TextView) findViewById(R.id.landingTextView);
-        ApiManager apiManager = new ApiManager();
-        Log.d("apimanager", apiManager.returnWeather());
+        ApiManager apiManager = new ApiManager(this);
         landingTextView.setText(apiManager.returnWeather());
     }
 }
