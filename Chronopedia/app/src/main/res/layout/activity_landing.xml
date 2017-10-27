@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.ludwig.chronopedia.LandingActivity">
 
+    <TextClock
+        android:id="@+id/textClock2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="88dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
     <TextView
         android:id="@+id/landingTextView"
         android:layout_width="wrap_content"
