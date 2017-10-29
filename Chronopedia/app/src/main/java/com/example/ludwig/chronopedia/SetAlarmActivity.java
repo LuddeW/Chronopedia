@@ -22,6 +22,7 @@ public class SetAlarmActivity extends Activity {
     public int hour;
     public int amPm;
     public int weekDay;
+    public int repeatIntervalMinutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,20 +49,20 @@ public class SetAlarmActivity extends Activity {
 
     public void start() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 1000 * 60 * 20;
+        int interval = 1000 * 60;
 
         // Set time (and date)
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 10);
-        calendar.set(Calendar.MINUTE, 30);
-        calendar.set(Calendar.AM_PM, 0);
-        calendar.set(Calendar.DAY_OF_WEEK, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.AM_PM, amPm);
+        calendar.set(Calendar.DAY_OF_WEEK, weekDay);
 
         // Repeat interval
         manager.setRepeating(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(),
-                1000 * 60 * 20, pendingIntent);
+                interval * repeatIntervalMinutes, pendingIntent);
         Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
     }
 
