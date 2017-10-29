@@ -1,5 +1,6 @@
 package com.example.ludwig.chronopedia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,8 @@ public class LandingActivity extends AppCompatActivity {
         landingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-
+                Intent i = new Intent(LandingActivity.this, MyAlarmsActivity.class);
+                startActivity(i);
             }
             });
     }
