@@ -13,28 +13,54 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hint"
+        android:text="@string/alarm_hint"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/startAlarm"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:text="Set Alarm"
+        android:text="@string/start_btn"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_marginBottom="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/textClock2" />
 
     <Button
         android:id="@+id/stopAlarm"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startAlarm"
-        android:text="Stop Alarm"
+        android:text="@string/stop_btn"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_alignBaseline="@+id/startAlarm"
+        android:layout_alignBottom="@+id/startAlarm"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="43dp" />
+
+    <TextClock
+        android:id="@+id/textClock2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/startAlarm"
+        android:layout_below="@+id/textClock2"
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
