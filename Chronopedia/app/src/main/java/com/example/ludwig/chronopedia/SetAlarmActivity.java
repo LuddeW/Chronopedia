@@ -18,6 +18,10 @@ import Handlers.AlarmHandler;
 public class SetAlarmActivity extends Activity {
 
     private PendingIntent pendingIntent;
+    public int minute;
+    public int hour;
+    public int amPm;
+    public int weekDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
