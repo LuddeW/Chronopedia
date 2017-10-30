@@ -1,6 +1,8 @@
 package com.example.ludwig.chronopedia;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import Data.Channel;
+import Data.Item;
 import Service.WeatherServiceCallback;
 import Service.YahooWeatherService;
 
@@ -21,6 +24,7 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
     Button landingButton;
 
     private YahooWeatherService service;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,10 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         landingButton = (Button) findViewById(R.id.landingButton);
 
         service = new YahooWeatherService(this);
-        service.refreshWeather("Austin, TX");
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading...");
+        dialog.show();
+        service.refreshWeather("Malmo, Sweden");
 
         landingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,11 +57,22 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
 
     @Override
     public void serviceSuccess(Channel channel) {
+        dialog.hide();
+
+        Item item = channel.getItem();
+
+        int resourceId = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
+        Drawable weatherIconDrawable = getResources().getDrawable(resourceId, null);
+        weatherIconImageView.setImageDrawable(weatherIconDrawable);
+        temperatureTextView.setText(item.getCondition().getTemperature()+ "\u00B0"+ channel.getUnits().getTemperature());
+        conditionTextView.setText(item.getCondition().getDescription());
+        locationTextView.setText(service.getLocation());
 
     }
 
     @Override
     public void serviceFailure(Exception exception) {
+        dialog.hide();
         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }
 }
