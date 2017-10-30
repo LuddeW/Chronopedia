@@ -6,5 +6,6 @@
     <string name="location">Location</string>
     <string name="Condition">Condition</string>
     <string name="temperature">Temperature</string>
+    <string name="condition">condition</string>
 
 </resources>

@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@drawable/na"
         android:layout_below="@+id/landingTextClock"
         android:layout_centerHorizontal="true" />
 
@@ -58,7 +58,7 @@
         android:id="@+id/conditionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Condition"
+        android:text="@string/condition"
         android:layout_below="@+id/temperatureTextView"
         android:layout_centerHorizontal="true" />
 
