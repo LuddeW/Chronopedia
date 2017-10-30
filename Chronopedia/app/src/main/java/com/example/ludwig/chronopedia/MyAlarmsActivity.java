@@ -9,12 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import Models.Alarm;
+
 public class MyAlarmsActivity extends AppCompatActivity {
 
     ListView listView;
     Button btnAddAlarm;
     private int pos;
-    private String lol = "lolol";
+
+    DatabaseHandler handler = new DatabaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,13 @@ public class MyAlarmsActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+        String[] alarms = new String[10];
+        for(int i = 0; i < alarms.length; i++)
+        {
+            alarms[i] = handler.getAlarm(i).getTitle();
+        }
         ArrayAdapter<String> adapter = new AlarmAdapter(this,
-                new String[]{lol});
+                alarms);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,6 +48,8 @@ public class MyAlarmsActivity extends AppCompatActivity {
         btnAddAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent i = new Intent(MyAlarmsActivity.this, SetAlarmActivity.class);
                 startActivity(i);
             }
