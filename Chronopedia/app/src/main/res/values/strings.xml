@@ -3,5 +3,8 @@
     <string name="start_btn">Set Alarm</string>
     <string name="stop_btn">Stop Alarm</string>
     <string name="alarm_hint">Choose time and date</string>
+    <string name="location">Location</string>
+    <string name="Condition">Condition</string>
+    <string name="temperature">Temperature</string>
 
 </resources>
