@@ -22,7 +22,7 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        landingTextView = (TextView) findViewById(R.id.landingTextView);
+        landingTextView = (TextView) findViewById(R.id.conditionTextView);
         landingButton = (Button) findViewById(R.id.landingButton);
 
         ApiManager apiManager = new ApiManager(this);
