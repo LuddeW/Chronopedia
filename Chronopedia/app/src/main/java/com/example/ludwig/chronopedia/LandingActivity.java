@@ -11,16 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import Models.Alarm;
-import Service.YahooWeatherService;
-
-public class LandingActivity extends AppCompatActivity {
-    TextView landingTextView;
-    Button landingButton;
-
-    DatabaseHandler handler = new DatabaseHandler(this);
 import Data.Channel;
 import Data.Item;
+import Models.Alarm;
 import Service.WeatherServiceCallback;
 import Service.YahooWeatherService;
 
@@ -30,6 +23,7 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
     TextView locationTextView;
     ImageView weatherIconImageView;
     Button landingButton;
+    DatabaseHandler handler = new DatabaseHandler(this);
 
     private YahooWeatherService service;
     private ProgressDialog dialog;
@@ -57,6 +51,18 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         landingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
+                String title = "test2";
+                int day = 1;
+                int hour = 01;
+                int min = 06;
+
+                Alarm a = new Alarm();
+                a.setTitle(title);
+                a.setDay(day);
+                a.setHour(hour);
+                a.setMin(min);
+                handler.insertAlarm(a);
+                // handler.deleteAll();
                 Intent i = new Intent(LandingActivity.this, MyAlarmsActivity.class);
                 startActivity(i);
             }
@@ -75,7 +81,6 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         temperatureTextView.setText(item.getCondition().getTemperature()+ "\u00B0"+ channel.getUnits().getTemperature());
         conditionTextView.setText(item.getCondition().getDescription());
         locationTextView.setText(service.getLocation());
-
     }
 
     @Override
