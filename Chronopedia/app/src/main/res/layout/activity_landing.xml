@@ -73,12 +73,12 @@
 
     <TextView
         android:id="@+id/wikiTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="170dp"
-        android:text="TextView"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/conditionTextView" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="170dp"
+        android:text="TextView" />
 
     <fragment
         android:id="@+id/fragmentStopAlarm"
@@ -88,6 +88,6 @@
         android:layout_marginBottom="53dp"
         tools:layout="@layout/fragment_stop_alarm"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/wikiTextView" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
