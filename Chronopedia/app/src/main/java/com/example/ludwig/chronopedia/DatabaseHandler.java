@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -101,7 +102,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 if (cursor.moveToFirst()) {
                     do {
                         Alarm alarmObj = new Alarm();
-                        alarmObj.setDate(cursor.getColumnIndex(COLUMN_DAY), cursor.getColumnIndex(COLUMN_HOUR), cursor.getColumnIndex(COLUMN_MIN));
+                        alarmObj.setDate(cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
                         alarmList[count] = alarmObj;
                         count++;
                     } while (cursor.moveToNext());
@@ -114,7 +115,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } finally {
             try { db.close(); } catch (Exception ignore) {}
         }
-
         return alarmList;
     }
 

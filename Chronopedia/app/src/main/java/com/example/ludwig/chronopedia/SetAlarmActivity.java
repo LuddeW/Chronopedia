@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DateFormat;
 import java.util.Calendar;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -103,9 +105,9 @@ public class SetAlarmActivity extends Activity {
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), alarmInterval, pendingIntent);
 
         //Sending to database FUNKAR INTE behöver rätt tid och datum
-//        Alarm alarm = new Alarm();
-//        alarm.setDate(targetCal.getTime().getDay(), targetCal.getTime().getHours(), targetCal.getTime().getMinutes());
-//        handler.insertAlarm(alarm);
+        Alarm alarm = new Alarm();
+        alarm.setDate(targetCal.get(targetCal.DAY_OF_MONTH), targetCal.get(targetCal.HOUR_OF_DAY), targetCal.get(targetCal.MINUTE));
+        handler.insertAlarm(alarm);
 
 
     }
