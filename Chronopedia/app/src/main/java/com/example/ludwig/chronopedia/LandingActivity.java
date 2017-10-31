@@ -58,18 +58,14 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         landingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                String title = "test2";
-                int day = 1;
-                int hour = 01;
-                int min = 06;
-
-                Alarm a = new Alarm();
-                a.setTitle(title);
-                a.setDay(day);
-                a.setHour(hour);
-                a.setMin(min);
-                handler.insertAlarm(a);
-                // handler.deleteAll();
+//                int day = 1;
+//                int hour = 11;
+//                int min = 56;
+//
+//                Alarm a = new Alarm();
+//                a.setDate(day, hour, min);
+//                handler.insertAlarm(a);
+//                handler.deleteAll();
                 Intent i = new Intent(LandingActivity.this, MyAlarmsActivity.class);
                 startActivity(i);
             }

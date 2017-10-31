@@ -3,7 +3,6 @@
     android:id="@+id/tvAlarm"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:gravity="center"
     android:paddingLeft="6dip"
     android:paddingRight="6dip"
     android:textSize="20sp" />

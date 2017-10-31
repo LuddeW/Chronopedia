@@ -22,6 +22,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 
 import Handlers.AlarmHandler;
+import Models.Alarm;
 
 public class SetAlarmActivity extends Activity {
 
@@ -34,6 +35,7 @@ public class SetAlarmActivity extends Activity {
     PendingIntent pendingIntent;
     Intent intent;
     AlarmManager alarmManager;
+    DatabaseHandler handler = new DatabaseHandler(this);
     final static int RQS_1 = 1;
 
     @Override
@@ -98,6 +100,13 @@ public class SetAlarmActivity extends Activity {
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), alarmInterval, pendingIntent);
+
+        //Sending to database FUNKAR INTE behöver rätt tid och datum
+//        Alarm alarm = new Alarm();
+//        alarm.setDate(targetCal.getTime().getDay(), targetCal.getTime().getHours(), targetCal.getTime().getMinutes());
+//        handler.insertAlarm(alarm);
+
+
     }
     private void stopAlarm(Calendar targetCal){
 

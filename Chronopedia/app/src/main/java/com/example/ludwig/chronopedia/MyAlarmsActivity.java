@@ -29,27 +29,31 @@ public class MyAlarmsActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        String[] alarms = new String[10];
+        String[] alarms = new String[(int)handler.getAlarmRows()];
+        Alarm[] a = handler.getAllElements();
+
         for(int i = 0; i < alarms.length; i++)
         {
-            alarms[i] = handler.getAlarm(i).getTitle();
+            alarms[i] = a[i].getDate();
         }
         ArrayAdapter<String> adapter = new AlarmAdapter(this,
                 alarms);
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 pos = position;
                 //När man klickar på ett av alarmen.
+                handler.deleteEntry(pos);
+                finish();
+                startActivity(getIntent());
             }
         });
 
         btnAddAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent i = new Intent(MyAlarmsActivity.this, SetAlarmActivity.class);
                 startActivity(i);
             }

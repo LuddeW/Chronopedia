@@ -22,6 +22,7 @@
 
     <ListView
         android:id="@+id/lvAlarms"
+        android:text="No Results"
         android:layout_width="352dp"
         android:layout_height="338dp"
         android:layout_marginLeft="8dp"
