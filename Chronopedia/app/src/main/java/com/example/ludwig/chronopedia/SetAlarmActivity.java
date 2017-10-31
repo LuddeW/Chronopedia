@@ -1,5 +1,6 @@
 package com.example.ludwig.chronopedia;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -17,7 +18,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
-
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 
 import Handlers.AlarmHandler;
 
@@ -98,20 +100,16 @@ public class SetAlarmActivity extends Activity {
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), alarmInterval, pendingIntent);
     }
     private void stopAlarm(Calendar targetCal){
-        Toast.makeText(this,"\n\n***\n"
-                + "The alarm set to "
-                + targetCal.getTime()
-                + "\n" + "has been cancelled." + "***\n",
-                Toast.LENGTH_SHORT).show();
-        //Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-        //PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
+
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         if(alarmManager!=null) {
             alarmManager.cancel(pendingIntent);
-            //Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"\n\n***\n"
+                            + "The alarm set to "
+                            + targetCal.getTime()
+                            + "\n" + "has been cancelled." + "***\n",
+                    Toast.LENGTH_SHORT).show();
         }
-        /*if(ringTone!=null){
-            ringTone.stop();
-            ringTone = null;*/
+
     }
 }
