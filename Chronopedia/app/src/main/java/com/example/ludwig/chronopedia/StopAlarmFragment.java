@@ -42,8 +42,13 @@ public class StopAlarmFragment extends Fragment {
         btnStopAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 ringtone.stop();
                 ringtone = null;
+
+                Toast.makeText(getContext(), "worky?", Toast.LENGTH_SHORT).show();
+                getView().setVisibility(View.GONE);
+
                 //This is called when pressing the round button in landing activity
             }
         });
