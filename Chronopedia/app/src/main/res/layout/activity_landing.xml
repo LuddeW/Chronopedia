@@ -71,4 +71,13 @@
         android:layout_below="@+id/conditionTextView"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:id="@+id/wikiTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/conditionTextView"
+        android:layout_marginBottom="76dp"
+        android:text="TextView" />
+
 </RelativeLayout>
