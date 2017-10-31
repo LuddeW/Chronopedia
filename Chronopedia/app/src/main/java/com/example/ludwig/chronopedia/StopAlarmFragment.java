@@ -1,6 +1,7 @@
 package com.example.ludwig.chronopedia;
 
 
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,16 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import static com.example.ludwig.chronopedia.AlarmReceiver.ringtone;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class StopAlarmFragment extends Fragment {
 
     Button btnStopAlarm;
-
+    Ringtone ringtone;
 
     public StopAlarmFragment() {
         // Required empty public constructor
@@ -33,9 +31,6 @@ public class StopAlarmFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_stop_alarm, container, false);
 
-        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        ringtone = RingtoneManager.getRingtone(getContext(), uri);
-        ringtone.play();
 
         btnStopAlarm = (Button) view.findViewById(R.id.btnStopAlarm);
 
@@ -54,6 +49,17 @@ public class StopAlarmFragment extends Fragment {
         });
 
         return view;
+    }
+    @Override
+    public void onActivityCreated (Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        if(getView()!=null){
+            if(getView().getVisibility() == View.VISIBLE) {
+                Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                ringtone = RingtoneManager.getRingtone(getContext(), uri);
+                ringtone.play();
+            }}
     }
 
 }

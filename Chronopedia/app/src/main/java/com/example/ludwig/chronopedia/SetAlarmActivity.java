@@ -52,6 +52,7 @@ public class SetAlarmActivity extends Activity {
                 now.get(Calendar.MONTH),
                 now.get(Calendar.DAY_OF_MONTH),
                 null);
+        timePicker.setIs24HourView(true);
         timePicker.setHour(now.get(Calendar.HOUR_OF_DAY));
         timePicker.setMinute(now.get(Calendar.MINUTE));
         btnSetAlarm = findViewById(R.id.startAlarm);
