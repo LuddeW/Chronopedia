@@ -25,6 +25,7 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
     TextView wikiTextView;
     ImageView weatherIconImageView;
     Button landingButton;
+    View cancelFragment;
     DatabaseHandler handler = new DatabaseHandler(this);
 
     private YahooWeatherService service;
@@ -44,6 +45,8 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         wikiTextView = (TextView) findViewById(R.id.wikiTextView);
         weatherIconImageView = (ImageView) findViewById(R.id.weatherIconImageView);
         landingButton = (Button) findViewById(R.id.landingButton);
+        cancelFragment = (View) findViewById(R.id.fragmentStopAlarm);
+        cancelFragment.setVisibility(View.GONE);
 
         service = new YahooWeatherService(this);
         dialog = new ProgressDialog(this);

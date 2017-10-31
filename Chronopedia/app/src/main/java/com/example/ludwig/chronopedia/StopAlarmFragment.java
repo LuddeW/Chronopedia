@@ -28,13 +28,14 @@ public class StopAlarmFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_stop_alarm, container, false);
-
+        Toast.makeText(getContext(), "worky?", Toast.LENGTH_SHORT).show();
         btnStopAlarm = (Button) view.findViewById(R.id.btnStopAlarm);
 
         btnStopAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "worky?", Toast.LENGTH_SHORT).show();
+                getView().setVisibility(View.GONE);
                 //This is called when pressing the round button in landing activity
             }
         });
