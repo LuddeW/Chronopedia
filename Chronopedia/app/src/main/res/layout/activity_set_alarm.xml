@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,60 +6,117 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ludwig.chronopedia.SetAlarmActivity">
+    android:orientation="vertical"
+    tools:context=".SetAlarmActivity" >
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/alarm_hint"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Set time and date for your alarm"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web" />
 
-    <Button
-        android:id="@+id/startAlarm"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:text="@string/start_btn"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:layout_marginBottom="71dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textClock2" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <Button
-        android:id="@+id/stopAlarm"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:text="@string/stop_btn"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:layout_alignBaseline="@+id/startAlarm"
-        android:layout_alignBottom="@+id/startAlarm"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="43dp" />
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:calendarViewShown="false"
 
-    <TextClock
-        android:id="@+id/textClock2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp" />
+                android:datePickerMode="spinner" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/startAlarm"
-        android:layout_below="@+id/textClock2"
-        android:layout_marginTop="37dp"
-        android:ems="10"
-        android:inputType="date"
-        android:layout_alignParentEnd="true" />
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                android:timePickerMode="spinner" />
 
-</RelativeLayout>
+            <Button
+                android:id="@+id/startAlarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Alarm"/>
+            <Button
+                android:id="@+id/stopAlarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel Alarm"/>
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:paddingBottom="@dimen/activity_vertical_margin"-->
+    <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingTop="@dimen/activity_vertical_margin"-->
+    <!--tools:context="com.example.ludwig.chronopedia.SetAlarmActivity">-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="@string/alarm_hint"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:layout_editor_absoluteY="0dp" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/startAlarm"-->
+        <!--android:layout_width="88dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/start_btn"-->
+        <!--tools:layout_editor_absoluteY="0dp"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--android:layout_marginBottom="30dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/stopAlarm"-->
+        <!--android:layout_width="88dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/stop_btn"-->
+        <!--tools:layout_editor_absoluteY="0dp"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--android:layout_marginEnd="32dp"-->
+        <!--android:layout_alignBaseline="@+id/startAlarm"-->
+        <!--android:layout_alignBottom="@+id/startAlarm"-->
+        <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<TimePicker-->
+        <!--android:id="@+id/timePicker"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/textView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:alwaysDrawnWithCache="false"-->
+        <!--android:amPmBackgroundColor="@android:color/white"-->
+        <!--android:amPmTextColor="@android:color/white"-->
+        <!--android:background="#ffffff"-->
+        <!--android:timePickerMode="spinner" />-->
+
+<!--</RelativeLayout>-->

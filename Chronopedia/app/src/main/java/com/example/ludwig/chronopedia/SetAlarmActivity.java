@@ -9,6 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.TimePicker;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
 
@@ -17,58 +23,95 @@ import Handlers.AlarmHandler;
 
 public class SetAlarmActivity extends Activity {
 
-    private PendingIntent pendingIntent;
-    public int minute;
-    public int hour;
-    public int amPm;
-    public int weekDay;
-    public int repeatIntervalMinutes;
+    DatePicker datePicker;
+    TimePicker timePicker;
+    Button btnSetAlarm;
+    Button btnStopAlarm;
+    TextView info;
+    int alarmInterval = 10;
+    PendingIntent pendingIntent;
+    Intent intent;
+    AlarmManager alarmManager;
+    final static int RQS_1 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_alarm);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        Intent alarmIntent = new Intent(SetAlarmActivity.this, AlarmHandler.class);
-        pendingIntent = PendingIntent.getBroadcast(SetAlarmActivity.this, 0, alarmIntent, 0);
+        info = findViewById(R.id.info);
+        datePicker =  findViewById(R.id.datePicker);
+        timePicker =  findViewById(R.id.timePicker);
+        Calendar now = Calendar.getInstance();
+        datePicker.init(now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH),
+                null);
+        timePicker.setHour(now.get(Calendar.HOUR_OF_DAY));
+        timePicker.setMinute(now.get(Calendar.MINUTE));
+        btnSetAlarm = findViewById(R.id.startAlarm);
+        btnStopAlarm = findViewById(R.id.stopAlarm);
 
-        findViewById(R.id.startAlarm).setOnClickListener(new View.OnClickListener()
-        {
+        btnSetAlarm.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-                start();
+            public void onClick(View view) {
+                Calendar current = Calendar.getInstance();
+
+                Calendar cal = Calendar.getInstance();
+                cal.set(datePicker.getYear(),
+                        datePicker.getMonth(),
+                        datePicker.getDayOfMonth(),
+                        timePicker.getHour(),
+                        timePicker.getMinute(),
+                        00);
+                if (cal.compareTo(current) <= 0) {
+                    Toast.makeText(getApplicationContext(),
+                            "Invalid Date/Time",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    setAlarm(cal);
+                }
             }
         });
-        findViewById(R.id.stopAlarm).setOnClickListener(new View.OnClickListener() {
+        btnStopAlarm.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-                cancel();
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                stopAlarm(cal);
             }
         });
     }
 
-    public void start() {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 1000 * 60;
+    private void setAlarm(Calendar targetCal) {
+        Toast.makeText(this,
+                "\n\n***\n"
+                        + "Alarm has been set "
+                        + targetCal.getTime()
+                        + "\n" + "***\n",
+                Toast.LENGTH_SHORT).show();
 
-        // Set time (and date)
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.AM_PM, amPm);
-        calendar.set(Calendar.DAY_OF_WEEK, weekDay);
-
-        // Repeat interval
-        manager.setRepeating(AlarmManager.RTC_WAKEUP,
-                calendar.getTimeInMillis(),
-                interval * repeatIntervalMinutes, pendingIntent);
-        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
+        intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), alarmInterval, pendingIntent);
     }
-
-    public void cancel() {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        manager.cancel(pendingIntent);
-        Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
+    private void stopAlarm(Calendar targetCal){
+        Toast.makeText(this,"\n\n***\n"
+                + "The alarm set to "
+                + targetCal.getTime()
+                + "\n" + "has been cancelled." + "***\n",
+                Toast.LENGTH_SHORT).show();
+        //Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if(alarmManager!=null) {
+            alarmManager.cancel(pendingIntent);
+            //Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
+        }
+        /*if(ringTone!=null){
+            ringTone.stop();
+            ringTone = null;*/
     }
 }
