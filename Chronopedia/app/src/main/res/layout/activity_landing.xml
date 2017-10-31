@@ -75,9 +75,19 @@
         android:id="@+id/wikiTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:text="TextView"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/conditionTextView"
-        android:layout_marginBottom="76dp"
-        android:text="TextView" />
+        android:layout_alignStart="@+id/conditionTextView" />
+
+    <fragment
+        android:id="@+id/fragmentStopAlarm"
+        android:name="com.example.ludwig.chronopedia.StopAlarmFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        tools:layout="@layout/fragment_stop_alarm"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/wikiTextView" />
 
 </RelativeLayout>
