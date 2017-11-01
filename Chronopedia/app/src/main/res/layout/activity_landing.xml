@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.ludwig.chronopedia.LandingActivity">
 
     <Button
@@ -75,10 +76,10 @@
         android:id="@+id/wikiTextView"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="170dp"
-        android:text="TextView" />
+        android:layout_marginBottom="35dp"
+        android:text="TextView"
+        android:layout_above="@+id/fragmentStopAlarm"
+        android:layout_centerHorizontal="true" />
 
     <fragment
         android:id="@+id/fragmentStopAlarm"
