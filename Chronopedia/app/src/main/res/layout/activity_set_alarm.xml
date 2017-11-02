@@ -16,7 +16,8 @@
         android:text="Set time and date for your alarm"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:autoLink="web" />
+        android:autoLink="web"
+        android:textColor="@color/text_color"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,7 +62,8 @@
             <TextView
                 android:id="@+id/info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"/>
 
         </LinearLayout>
     </ScrollView>

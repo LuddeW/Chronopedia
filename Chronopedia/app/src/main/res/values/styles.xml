@@ -17,5 +17,4 @@
         <item name="android:background">@drawable/button_rounded</item>
         <item name="android:textColor">#FDFDFE</item>
     </style>
-
 </resources>

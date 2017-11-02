@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginRight="16dp"
         android:background="@android:drawable/ic_lock_idle_alarm"
-        android:backgroundTint="@android:color/black"
+        android:backgroundTint="@color/text_color"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,7 +34,8 @@
         app:layout_constraintVertical_bias="0.149"
         android:layout_marginTop="13dp"
         android:layout_below="@+id/landingButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_color"/>
 
     <ImageView
         android:id="@+id/weatherIconImageView"
@@ -53,7 +54,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/weatherIconImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/conditionTextView"
@@ -61,7 +63,8 @@
         android:layout_height="wrap_content"
         android:text="@string/condition"
         android:layout_below="@+id/temperatureTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/locationTextView"
@@ -70,7 +73,8 @@
         android:text="@string/location"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/conditionTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_color"/>
 
     <TextView
         android:id="@+id/wikiTextView"
@@ -79,7 +83,8 @@
         android:layout_marginBottom="35dp"
         android:text="TextView"
         android:layout_below="@+id/locationTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/text_color"/>
 
     <fragment
         android:id="@+id/fragmentStopAlarm"
