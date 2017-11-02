@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
         android:text="TextView"
-        android:layout_above="@+id/fragmentStopAlarm"
+        android:layout_below="@+id/locationTextView"
         android:layout_centerHorizontal="true" />
 
     <fragment
