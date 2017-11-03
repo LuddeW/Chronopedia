@@ -25,11 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver{
         //landingActivity.cancelFragment.setVisibility(VISIBLE);
         Intent landingIntent = new Intent(context, LandingActivity.class);
         context.startActivity(landingIntent);
-        //if(landingActivity.stopAlarmFragment != null)
-        {
-            //landingActivity.stopAlarmFragment.btnStopAlarm.setVisibility(View.VISIBLE);
-            landingActivity.cancelFragment.setVisibility(VISIBLE);
-        }
+
         Toast.makeText(context, "Good Morning", Toast.LENGTH_LONG).show();
         //landingActivity.cancelFragment.setVisibility(VISIBLE);
         //stopFragment.getView().setVisibility(View.VISIBLE);
