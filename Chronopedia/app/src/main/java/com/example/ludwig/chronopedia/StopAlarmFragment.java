@@ -32,17 +32,28 @@ public class StopAlarmFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_stop_alarm, container, false);
 
 
+        if(getView()!=null)
+        {
+            if(getView().getVisibility() == View.VISIBLE) {
+                Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                ringtone = RingtoneManager.getRingtone(getContext(), uri);
+                ringtone.play();
+            }
+        }
+
         btnStopAlarm = (Button) view.findViewById(R.id.btnStopAlarm);
 
         btnStopAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ringtone.stop();
-                ringtone = null;
+                if(ringtone != null){
+                    ringtone.stop();
+                    ringtone = null;
+                }
 
                 Toast.makeText(getContext(), "worky?", Toast.LENGTH_SHORT).show();
-                getView().setVisibility(View.GONE);
+                getView().setVisibility(View.INVISIBLE);
 
                 //This is called when pressing the round button in landing activity
             }
@@ -50,16 +61,6 @@ public class StopAlarmFragment extends Fragment {
 
         return view;
     }
-    @Override
-    public void onActivityCreated (Bundle savedInstanceState){
-        super.onActivityCreated(savedInstanceState);
 
-        if(getView()!=null){
-            if(getView().getVisibility() == View.VISIBLE) {
-                Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-                ringtone = RingtoneManager.getRingtone(getContext(), uri);
-                ringtone.play();
-            }}
-    }
 
 }

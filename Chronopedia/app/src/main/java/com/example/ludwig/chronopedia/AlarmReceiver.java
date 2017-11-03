@@ -23,10 +23,13 @@ public class AlarmReceiver extends BroadcastReceiver{
     public void onReceive(Context context, Intent intent) {
 
         //landingActivity.cancelFragment.setVisibility(VISIBLE);
-
-        Intent i = new Intent(context, LandingActivity.class);
-        context.startActivity(i);
-
+        Intent landingIntent = new Intent(context, LandingActivity.class);
+        context.startActivity(landingIntent);
+        if(landingActivity.stopAlarmFragment != null)
+        {
+            //landingActivity.stopAlarmFragment.btnStopAlarm.setVisibility(View.VISIBLE);
+            landingActivity.cancelFragment.setVisibility(VISIBLE);
+        }
         Toast.makeText(context, "Good Morning", Toast.LENGTH_LONG).show();
         //landingActivity.cancelFragment.setVisibility(VISIBLE);
         //stopFragment.getView().setVisibility(View.VISIBLE);
