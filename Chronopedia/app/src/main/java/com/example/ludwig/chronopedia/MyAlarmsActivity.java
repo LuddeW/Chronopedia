@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import Handlers.AlarmHandler;
 import Models.Alarm;
 
 public class MyAlarmsActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MyAlarmsActivity extends AppCompatActivity {
     ListView listView;
     Button btnAddAlarm;
     private int pos;
+    AlarmHandler alarmHandler;
 
     DatabaseHandler handler = new DatabaseHandler(this);
 
@@ -25,20 +27,19 @@ public class MyAlarmsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_alarms);
         listView = (ListView) findViewById(R.id.lvAlarms);
         btnAddAlarm = (Button) findViewById(R.id.btnAdd);
+        alarmHandler = new AlarmHandler(this);
         initialize();
     }
 
     private void initialize() {
         String[] alarms = new String[(int)handler.getAlarmRows()];
         Alarm[] a = handler.getAllElements();
-
         for(int i = 0; i < alarms.length; i++)
         {
             alarms[i] = a[i].getDate();
         }
         ArrayAdapter<String> adapter = new AlarmAdapter(this,
                 alarms);
-
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -46,6 +47,7 @@ public class MyAlarmsActivity extends AppCompatActivity {
                 pos = position;
                 //När man klickar på ett av alarmen.
                 handler.deleteEntry(pos);
+                alarmHandler.stopAlarm(pos);
                 finish();
                 startActivity(getIntent());
             }

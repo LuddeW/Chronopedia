@@ -33,12 +33,7 @@ public class SetAlarmActivity extends Activity {
     Button btnSetAlarm;
     Button btnStopAlarm;
     TextView info;
-    int alarmInterval = 10;
-    PendingIntent pendingIntent;
-    Intent intent;
-    AlarmManager alarmManager;
-    DatabaseHandler handler = new DatabaseHandler(this);
-    final static int RQS_1 = 1;
+    AlarmHandler alarmHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +54,7 @@ public class SetAlarmActivity extends Activity {
         timePicker.setMinute(now.get(Calendar.MINUTE));
         btnSetAlarm = findViewById(R.id.startAlarm);
         btnStopAlarm = findViewById(R.id.stopAlarm);
+        alarmHandler = new AlarmHandler(this);
 
         btnSetAlarm.setOnClickListener(new OnClickListener() {
             @Override
@@ -77,53 +73,16 @@ public class SetAlarmActivity extends Activity {
                             "Invalid Date/Time",
                             Toast.LENGTH_LONG).show();
                 } else {
-                    setAlarm(cal);
+                    alarmHandler.setAlarm(cal);
                 }
             }
         });
         btnStopAlarm.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                stopAlarm(cal);
+                //Calendar cal = Calendar.getInstance();
+                //alarmHandler.stopAlarm(cal);
             }
         });
-    }
-
-    private void setAlarm(Calendar targetCal) {
-        Toast.makeText(this,
-                "\n\n***\n"
-                        + "Alarm has been set "
-                        + targetCal.getTime()
-                        + "\n" + "***\n",
-                Toast.LENGTH_SHORT).show();
-//        Toast.makeText(this, datePicker.getDayOfMonth(), Toast.LENGTH_SHORT).show();
-
-        intent = new Intent(getBaseContext(), AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
-
-        String.valueOf(targetCal.getTime());
-
-        //Sending to database FUNKAR INTE behöver rätt tid och datum
-        Alarm alarm = new Alarm();
-        alarm.setDate(targetCal.get(targetCal.DAY_OF_MONTH), targetCal.get(targetCal.HOUR_OF_DAY), targetCal.get(targetCal.MINUTE));
-        handler.insertAlarm(alarm);
-
-
-    }
-    private void stopAlarm(Calendar targetCal){
-
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        if(alarmManager!=null) {
-            alarmManager.cancel(pendingIntent);
-            Toast.makeText(this,"\n\n***\n"
-                            + "The alarm set to "
-                            + targetCal.getTime()
-                            + "\n" + "has been cancelled." + "***\n",
-                    Toast.LENGTH_SHORT).show();
-        }
-
     }
 }
