@@ -118,6 +118,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return alarmList;
     }
 
+    public int numberOfAlarms(){
+        Alarm[] alarmList = new Alarm[(int)getAlarmRows()];
+        int count = 0;
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+
+        db = this.getReadableDatabase();
+        try {
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        Alarm alarmObj = new Alarm();
+                        alarmObj.setDate(cursor.getInt(1), cursor.getInt(2), cursor.getInt(3));
+                        alarmList[count] = alarmObj;
+                        count++;
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try { cursor.close(); } catch (Exception ignore) {}
+            }
+
+        } finally {
+            try { db.close(); } catch (Exception ignore) {}
+        }
+        return  count;
+    }
+
     public void deleteEntry(int id) {
         db = getWritableDatabase();
         db.delete(DatabaseHandler.TABLE_NAME, COLUMN_ID+"="+id, null);

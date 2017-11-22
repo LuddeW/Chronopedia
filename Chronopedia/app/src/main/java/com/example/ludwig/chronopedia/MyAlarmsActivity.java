@@ -50,7 +50,7 @@ public class MyAlarmsActivity extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
+        //int i =handler.numberOfAlarms();
         btnAddAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
