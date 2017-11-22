@@ -103,7 +103,6 @@ public class SetAlarmActivity extends Activity {
         pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), alarmInterval, pendingIntent);
 
         String.valueOf(targetCal.getTime());
 
