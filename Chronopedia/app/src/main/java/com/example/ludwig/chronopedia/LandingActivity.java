@@ -46,7 +46,9 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         weatherIconImageView = (ImageView) findViewById(R.id.weatherIconImageView);
         landingButton = (Button) findViewById(R.id.landingButton);
         cancelFragment = (View) findViewById(R.id.fragmentStopAlarm);
-        cancelFragment.setVisibility(View.GONE);
+
+        //cancelFragment.setVisibility(View.GONE);
+
 
         service = new YahooWeatherService(this);
         dialog = new ProgressDialog(this);
