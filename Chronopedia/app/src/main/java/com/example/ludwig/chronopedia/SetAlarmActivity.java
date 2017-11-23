@@ -54,7 +54,7 @@ public class SetAlarmActivity extends Activity {
         timePicker.setMinute(now.get(Calendar.MINUTE));
         btnSetAlarm = findViewById(R.id.startAlarm);
         btnStopAlarm = findViewById(R.id.stopAlarm);
-        alarmHandler = new AlarmHandler(this);
+        alarmHandler = new AlarmHandler(getApplicationContext());
 
         btnSetAlarm.setOnClickListener(new OnClickListener() {
             @Override

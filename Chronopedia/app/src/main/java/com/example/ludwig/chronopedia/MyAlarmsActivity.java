@@ -27,11 +27,12 @@ public class MyAlarmsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_alarms);
         listView = (ListView) findViewById(R.id.lvAlarms);
         btnAddAlarm = (Button) findViewById(R.id.btnAdd);
-        alarmHandler = new AlarmHandler(this);
+        alarmHandler = new AlarmHandler(getApplicationContext());
         initialize();
     }
 
     private void initialize() {
+        handler.deleteAll();
         String[] alarms = new String[(int)handler.getAlarmRows()];
         Alarm[] a = handler.getAllElements();
         for(int i = 0; i < alarms.length; i++)

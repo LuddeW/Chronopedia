@@ -40,7 +40,7 @@ public class AlarmHandler {
 //        Toast.makeText(this, datePicker.getDayOfMonth(), Toast.LENGTH_SHORT).show();
 
         intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), handler.numberOfAlarms() + 1, intent, 0);
+        pendingIntent = PendingIntent.getBroadcast(context, handler.numberOfAlarms(), intent, 0);
 
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
@@ -55,11 +55,13 @@ public class AlarmHandler {
 
     }
     public void stopAlarm(int id){
+        int i = 0;
         Calendar targetCal = Calendar.getInstance();
-        pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), id, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(context, id, intent, 0);
         if(alarmManager!=null) {
-            //alarmManager.cancel(pendingIntent);
+            alarmManager.cancel(pendingIntent);
             Toast.makeText(context,"\n\n***\n"
                             + "The alarm set to "
                             + targetCal.getTime()
