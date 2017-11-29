@@ -16,6 +16,7 @@ public class MyAlarmsActivity extends AppCompatActivity {
 
     ListView listView;
     Button btnAddAlarm;
+    Button btnBack;
     private int pos;
     AlarmHandler alarmHandler;
 
@@ -27,6 +28,7 @@ public class MyAlarmsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_alarms);
         listView = (ListView) findViewById(R.id.lvAlarms);
         btnAddAlarm = (Button) findViewById(R.id.btnAdd);
+        btnBack = (Button) findViewById(R.id.btnBack);
         alarmHandler = new AlarmHandler(getApplicationContext());
         initialize();
     }
@@ -57,10 +59,19 @@ public class MyAlarmsActivity extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
+        ///
         btnAddAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MyAlarmsActivity.this, SetAlarmActivity.class);
+                startActivity(i);
+            }
+        });
+        ///
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MyAlarmsActivity.this, LandingActivity.class);
                 startActivity(i);
             }
         });

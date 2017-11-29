@@ -18,17 +18,17 @@ import Service.WeatherServiceCallback;
 import Service.WikipediaDateEvents;
 import Service.YahooWeatherService;
 
-public class LandingActivity extends AppCompatActivity /*implements WeatherServiceCallback */{
-//    TextView conditionTextView;
-//    TextView temperatureTextView;
-//    TextView locationTextView;
+public class LandingActivity extends AppCompatActivity implements WeatherServiceCallback {
+    TextView conditionTextView;
+    TextView temperatureTextView;
+    TextView locationTextView;
 //    TextView wikiTextView;
-//    ImageView weatherIconImageView;
+    ImageView weatherIconImageView;
     Button landingButton;
     View cancelFragment;
 
-//    private YahooWeatherService service;
-//    private ProgressDialog dialog;
+    private YahooWeatherService service;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +38,20 @@ public class LandingActivity extends AppCompatActivity /*implements WeatherServi
     }
 
     private void initComponents(){
-//        conditionTextView = (TextView) findViewById(R.id.conditionTextView);
-//        temperatureTextView = (TextView) findViewById(R.id.temperatureTextView);
-//        locationTextView = (TextView) findViewById(R.id.locationTextView);
+        conditionTextView = (TextView) findViewById(R.id.conditionTextView);
+        temperatureTextView = (TextView) findViewById(R.id.temperatureTextView);
+        locationTextView = (TextView) findViewById(R.id.locationTextView);
 //        wikiTextView = (TextView) findViewById(R.id.wikiTextView);
-//        weatherIconImageView = (ImageView) findViewById(R.id.weatherIconImageView);
+        weatherIconImageView = (ImageView) findViewById(R.id.weatherIconImageView);
         landingButton = (Button) findViewById(R.id.landingButton);
-        cancelFragment = (View) findViewById(R.id.fragmentStopAlarm);
 
-        //cancelFragment.setVisibility(View.GONE);
 //
 //
-//        service = new YahooWeatherService(this);
-//        dialog = new ProgressDialog(this);
-//        dialog.setMessage("Loading...");
-//        dialog.show();
-//        service.refreshWeather("Malmo, Sweden");
+        service = new YahooWeatherService(this);
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Loading...");
+        dialog.show();
+        service.refreshWeather("Malmo, Sweden");
 //        new WikipediaDateEvents(wikiTextView).execute();
 
         landingButton.setOnClickListener(new View.OnClickListener() {
@@ -66,23 +64,23 @@ public class LandingActivity extends AppCompatActivity /*implements WeatherServi
             });
     }
 
-//    @Override
-//    public void serviceSuccess(Channel channel) {
-//        dialog.hide();
-//
-//        Item item = channel.getItem();
-//
-//        int resourceId = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
-//        Drawable weatherIconDrawable = getResources().getDrawable(resourceId, null);
-//        weatherIconImageView.setImageDrawable(weatherIconDrawable);
-//        temperatureTextView.setText(item.getCondition().getTemperature()+ "\u00B0"+ channel.getUnits().getTemperature());
-//        conditionTextView.setText(item.getCondition().getDescription());
-//        locationTextView.setText(service.getLocation());
-//    }
-//
-//    @Override
-//    public void serviceFailure(Exception exception) {
-//        dialog.hide();
-//        Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
-//    }
+    @Override
+    public void serviceSuccess(Channel channel) {
+        dialog.hide();
+
+        Item item = channel.getItem();
+
+        int resourceId = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
+        Drawable weatherIconDrawable = getResources().getDrawable(resourceId, null);
+        weatherIconImageView.setImageDrawable(weatherIconDrawable);
+        temperatureTextView.setText(item.getCondition().getTemperature()+ "\u00B0"+ channel.getUnits().getTemperature());
+        conditionTextView.setText(item.getCondition().getDescription());
+        locationTextView.setText(service.getLocation());
+    }
+
+    @Override
+    public void serviceFailure(Exception exception) {
+        dialog.hide();
+        Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
+    }
 }

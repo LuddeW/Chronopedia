@@ -20,6 +20,21 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/btnBack"
+        style="@style/button_style"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="308dp"
+        android:onClick="onButtonClick"
+        android:text="&#171;"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="45sp"
+        android:textAlignment="gravity"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ListView
         android:id="@+id/lvAlarms"

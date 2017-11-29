@@ -76,24 +76,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/text_color"/>
 
-    <TextView
-        android:id="@+id/wikiTextView"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:text="TextView"
-        android:layout_below="@+id/locationTextView"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/text_color"/>
 
-    <fragment
-        android:id="@+id/fragmentStopAlarm"
-        android:name="com.example.ludwig.chronopedia.StopAlarmFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="53dp"
-        tools:layout="@layout/fragment_stop_alarm"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>

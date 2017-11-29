@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Chronopedia</string>
+    <string name="app_name">Chronopedia&#8482;</string>
     <string name="start_btn">Set Alarm</string>
     <string name="stop_btn">Stop Alarm</string>
     <string name="alarm_hint">Choose time and date</string>
