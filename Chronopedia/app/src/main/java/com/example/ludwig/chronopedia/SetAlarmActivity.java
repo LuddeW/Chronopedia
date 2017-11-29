@@ -75,13 +75,15 @@ public class SetAlarmActivity extends Activity {
                 } else {
                     alarmHandler.setAlarm(cal);
                 }
+                Intent i = new Intent(SetAlarmActivity.this, MyAlarmsActivity.class);
+                startActivity(i);
             }
         });
         btnStopAlarm.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Calendar cal = Calendar.getInstance();
-                //alarmHandler.stopAlarm(cal);
+                Intent i = new Intent(SetAlarmActivity.this, MyAlarmsActivity.class);
+                startActivity(i);
             }
         });
     }

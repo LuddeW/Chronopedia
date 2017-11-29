@@ -32,7 +32,6 @@ public class MyAlarmsActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        handler.deleteAll();
         String[] alarms = new String[(int)handler.getAlarmRows()];
         Alarm[] a = handler.getAllElements();
         for(int i = 0; i < alarms.length; i++)
