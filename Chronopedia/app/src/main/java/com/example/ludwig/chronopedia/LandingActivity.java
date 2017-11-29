@@ -79,7 +79,6 @@ public class LandingActivity extends AppCompatActivity implements WeatherService
         dialog.hide();
 
         Item item = channel.getItem();
-
         int resourceId = getResources().getIdentifier("drawable/icon_" + item.getCondition().getCode(), null, getPackageName());
         Drawable weatherIconDrawable = getResources().getDrawable(resourceId, null);
         weatherIconImageView.setImageDrawable(weatherIconDrawable);
