@@ -63,9 +63,8 @@ public class AlarmHandler {
         if(alarmManager!=null) {
             alarmManager.cancel(pendingIntent);
             Toast.makeText(context,"\n\n***\n"
-                            + "The alarm set to "
-                            + targetCal.getTime()
-                            + "\n" + "has been cancelled." + "***\n",
+                            + "The alarm"
+                            + "\n" + "has been cancelled." + "\n***",
                     Toast.LENGTH_SHORT).show();
         }
 

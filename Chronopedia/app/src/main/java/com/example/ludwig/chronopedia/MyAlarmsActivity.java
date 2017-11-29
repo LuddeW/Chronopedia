@@ -46,8 +46,13 @@ public class MyAlarmsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 pos = position;
                 //När man klickar på ett av alarmen.
+                if (handler.numberOfAlarms() == 1){
+                    handler.deleteAll();
+                }
+                else{
                 handler.deleteEntry(pos);
                 alarmHandler.stopAlarm(pos);
+                }
                 finish();
                 startActivity(getIntent());
             }
