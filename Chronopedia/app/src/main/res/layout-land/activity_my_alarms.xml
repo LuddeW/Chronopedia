@@ -12,41 +12,37 @@
         style="@style/button_style"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="232dp"
         android:text="+"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnBack"
         style="@style/button_style"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center_horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="232dp"
         android:text="&#171;"
-        android:textAlignment="gravity"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="45sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="36sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/lvAlarms"
-        android:text="No Results"
         android:layout_width="352dp"
         android:layout_height="338dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
+        android:text="No Results"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

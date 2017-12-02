@@ -41,10 +41,9 @@
         android:id="@+id/weatherIconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        app:srcCompat="@drawable/icon_na"
-        android:layout_below="@+id/landingTextClock"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/icon_na" />
 
     <TextView
         android:id="@+id/temperatureTextView"
