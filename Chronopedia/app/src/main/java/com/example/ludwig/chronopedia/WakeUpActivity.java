@@ -54,10 +54,11 @@ public class WakeUpActivity extends AppCompatActivity implements WeatherServiceC
         new WikipediaDateEvents(wikiTextView).execute();
 
         //Plays the ringtone for the alarm
-        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        ringtone = RingtoneManager.getRingtone(getApplicationContext(), uri);
-        ringtone.play();
-
+        if(ringtone == null) {
+            Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            ringtone = RingtoneManager.getRingtone(getApplicationContext(), uri);
+            ringtone.play();
+        }
         btnStopAlarm = (Button) findViewById(R.id.btnStopAlarm);
         btnLandingActivity = (Button) findViewById(R.id.btnLandingActivity);
         btnLandingActivity.setVisibility(View.INVISIBLE);
